@@ -1,11 +1,12 @@
-import { Pool } from 'pg';
+import pg from 'pg';
+const { Pool } = pg;
 
 const connection = new Pool({
-    user: 'localhost',
+    user: 'postgres',
     host: 'localhost',
     password: 'postgres',
+    database: 'api_facilita',
     port: 5432,
-    database: 'postgres',
 });
 
 export default connection;

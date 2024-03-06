@@ -1,19 +1,15 @@
 {
-  "name": "teste-desenvolvedor-facilita-juridico",
+  "name": "front",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.86",
-    "@types/pg": "^8.11.2",
-    "@types/react": "^18.2.63",
-    "@types/react-dom": "^18.2.19",
-    "express": "^4.17.1",
-    "pg": "^8.11.3",
+    "@types/node": "^16.18.87",
+    "@types/react": "^18.2.64",
+    "@types/react-dom": "^18.2.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -22,7 +18,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "node src/backend/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
