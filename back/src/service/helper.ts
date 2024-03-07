@@ -1,8 +1,12 @@
-function calcularDistancia({x: x1, y: y1}, {x: x2, y: y2}) {
+import { ClienteType } from "../model/ClienteType";
+
+function calcularDistancia(ponto1:ClienteType, ponto2:ClienteType) {
+    const {x: x1, y: y1} = ponto1.localizacao;
+    const {x: x2, y: y2} = ponto2.localizacao;
     return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
   }
   
-export default function calcularCaminhoMaisCurto(pontos: {x: number, y: number}[]) {
+export default function calcularCaminhoMaisCurto(pontos: ClienteType[]) {
     const caminho = [0]; // Começamos no primeiro ponto
     const visitados = new Set([0]); // Mantém registro dos pontos já visitados
     let pontoAtual = 0;
