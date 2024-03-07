@@ -33,7 +33,7 @@ export default function Home({clientes}: HomeProps) {
         <h1>Busca Clientes</h1>
         <Rotas />
         <div>
-          <label htmlFor="">
+s          <label htmlFor="nome">
             Nome
             <input 
             type="text" 
@@ -42,7 +42,7 @@ export default function Home({clientes}: HomeProps) {
             onChange={onChange}
           />
           </label>
-          <label htmlFor="">
+          <label htmlFor="email">
             Email
             <input 
               type="text"
@@ -51,7 +51,7 @@ export default function Home({clientes}: HomeProps) {
               onChange={onChange}  
             />
           </label>
-          <label htmlFor="">
+          <label htmlFor="telefone">
             Telefone
             <input 
               type="text"
