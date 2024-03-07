@@ -11,6 +11,9 @@ CREATE TABLE "clientes" (
 );
 
 INSERT INTO "clientes" ("nome", "email", "telefone", "localizacao") 
-VALUES ('João', 'joao@hotmail.com', 999999999, POINT(0, 1));
+VALUES ('Joao', 'joao@hotmail.com', 999999999, POINT(0, 1)),
+       ('Maria', 'maria@homail.com', 888888888, POINT(1, 0)),
+       ('Jose', 'jose@hotmail.com', 777777777, POINT(1, 1)),
+       ('joaquin', 'joaquin@hotmail.com', 666666666, POINT(0, 0));
 
 
