@@ -1,4 +1,5 @@
 import ClienteModel from "../model/ClienteModel";
+import { ClienteType } from "../model/ClienteType";
 import calcularCaminhoMaisCurto from "./helper";
 
 class ClienteService {
@@ -18,6 +19,9 @@ class ClienteService {
         return await this.model.findAll();
     }
 
+    public async insert(cliente: ClienteType){
+        return await this.model.insert(cliente);
+    }
 }
 
 export default ClienteService;
