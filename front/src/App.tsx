@@ -6,7 +6,6 @@ import {ClienteType} from '../../back/src/model/ClienteType';
 
 function App() {
   const [clientes, setClientes] = useState<ClienteType[]>([]);
-  const [nome, setNome] = useState('');
   
   useEffect(() => {
     apiRequire().then((data) => {
@@ -18,7 +17,6 @@ function App() {
   return (
     <div>
       <Home clientes={clientes} />
-
     </div>
   );
 }
