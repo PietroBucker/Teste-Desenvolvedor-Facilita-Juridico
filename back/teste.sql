@@ -6,7 +6,7 @@ CREATE DATABASE api_facilita;
 CREATE TABLE "clientes" (
     "nome" VARCHAR(50) NOT NULL,
     "email" VARCHAR(50) NOT NULL,
-    "telefone" INT NOT NULL,
+    "telefone" VARCHAR(50) NOT NULL,
     "localizacao" POINT NOT NULL
 );
 
