@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import {apiRequire} from './context/Fetch';
 import Home from './component/Home';
 import {ClienteType} from '../../back/src/model/ClienteType';
+import Cadastro from './component/Cadastro';
 
 function App() {
   const [clientes, setClientes] = useState<ClienteType[]>([]);
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div>
+      <Cadastro />
       <Home clientes={clientes} />
     </div>
   );
