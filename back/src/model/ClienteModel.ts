@@ -3,6 +3,7 @@ import { ClienteType } from './ClienteType';
 
 interface connector {
     findAll(): Promise<ClienteType[]>;
+    
 }
 
 class ClienteModel implements connector{
@@ -15,6 +16,11 @@ class ClienteModel implements connector{
         const result = await this.connection.query('SELECT * FROM clientes');
         return result.rows;
     }
+
+    // public async findAllLocalizacoes(): Promise<{x: number, y: number}[]> {
+    //     const result = await this.connection.query('SELECT localizacao FROM clientes');
+    //     return result.rows;
+    // }
 }
 
 export default ClienteModel;
