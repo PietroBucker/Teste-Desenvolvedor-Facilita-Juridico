@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {ClienteType} from '../../../back/src/model/ClienteType';
+import Rotas from './Rotas';
 
 type HomeProps = {
   clientes: ClienteType[]
@@ -8,10 +9,11 @@ type HomeProps = {
 type atributes = {
   nome: string,
   email: string,
+  telefone: string
 }
 
 export default function Home({clientes}: HomeProps) {
-  const [nome, setNome] = useState<atributes>({nome:'', email:''});
+  const [nome, setNome] = useState<atributes>({nome:'', email:'', telefone:''});
 
   const onChange = ({target}: any) => {
     setNome({...nome, [target.name]: target.value});
@@ -20,13 +22,16 @@ export default function Home({clientes}: HomeProps) {
 
   const filtro = clientes.filter((cliente) => (
     cliente.nome.toLocaleLowerCase().includes(nome.nome) && 
-    cliente.email.toLocaleLowerCase().includes(nome.email))
-  );
-
+    cliente.email.toLocaleLowerCase().includes(nome.email) && 
+    cliente.telefone.includes(nome.telefone)
+    )
+  );    
+  console.log(clientes);
   
   return (
     <div>
         <h1>Busca Clientes</h1>
+        <Rotas />
         <div>
           <label htmlFor="">
             Nome
@@ -48,13 +53,19 @@ export default function Home({clientes}: HomeProps) {
           </label>
           <label htmlFor="">
             Telefone
-            <input type="text" />
+            <input 
+              type="text"
+              name='telefone'
+              value={nome.telefone}
+              onChange={onChange} 
+            />
           </label>
           <div>
             {filtro.map((cliente, index) => (
               <div key={index}>
                 <p>{cliente.nome}</p>
                 <p>{cliente.email}</p>
+                <p>{cliente.telefone}</p>
               </div>
               ))
             }
@@ -64,3 +75,4 @@ export default function Home({clientes}: HomeProps) {
     </div>
   )
 }
+
