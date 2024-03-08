@@ -1,3 +1,4 @@
+import './styles/StyleCadastro.css'
 import React from 'react'
 import { ClienteType } from '../../../back/src/model/ClienteType';
 
@@ -49,8 +50,9 @@ export default function Cadastro() {
   }
   
   return (
-    <div>Cadastro
-      <form>
+    <div className='cadastro_container'>
+      <h1>Cadastro</h1>
+      <form className='cadastro_form_container'>
         <label htmlFor="">
           Nome
           <input 
