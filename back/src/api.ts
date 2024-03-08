@@ -19,7 +19,7 @@ api.get('/', async (req: Request, res: Response): Promise<Response> => {
     try{
         const response = await service.findAll();
         
-        return res.status(200).json({...response, ok: true});
+        return res.status(200).json(response);
     } catch (error) {
         return res.status(500).json({ message: error });
     }
@@ -28,7 +28,7 @@ api.get('/', async (req: Request, res: Response): Promise<Response> => {
 api.get('/route', async (req: Request, res: Response): Promise<Response> => {
     try{
         const response = await service.findRoute();
-        return res.status(200).json({...response, ok: true});
+        return res.status(200).json(response);
     } catch (error) {
         return res.status(500).json({ message: error });
     }
@@ -37,7 +37,7 @@ api.get('/route', async (req: Request, res: Response): Promise<Response> => {
 api.post('/cadastro', async (req: Request, res: Response): Promise<Response> => {
     try{
         const response = await service.insert(req.body);
-        return res.status(201).json({...response, ok: true});
+        return res.status(201).json(response);
     } catch (error) {
         return res.status(500).json({ message: error });
     }
