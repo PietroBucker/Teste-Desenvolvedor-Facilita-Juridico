@@ -1,3 +1,4 @@
+import './styles/StyleHome.css'
 import React, { useState } from 'react'
 import {ClienteType} from '../../../back/src/model/ClienteType';
 import Rotas from './Rotas';
@@ -29,11 +30,11 @@ export default function Home({clientes}: HomeProps) {
   console.log(clientes);
   
   return (
-    <div>
+    <div className='home_container'>
         <h1>Busca Clientes</h1>
         <Rotas />
-        <div>
-s          <label htmlFor="nome">
+        <form className='home_form_container'>
+          <label htmlFor="nome">
             Nome
             <input 
             type="text" 
@@ -60,17 +61,30 @@ s          <label htmlFor="nome">
               onChange={onChange} 
             />
           </label>
-          <div>
+          <table className='home_content'>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>localizacao</th>
+              </tr>
+            </thead>
+            <tbody>
+
             {filtro.map((cliente, index) => (
-              <div key={index}>
-                <p>{cliente.nome}</p>
-                <p>{cliente.email}</p>
-                <p>{cliente.telefone}</p>
-              </div>
+              <tr key={index}>
+                <td>{cliente.nome}</td>
+                <td>{cliente.email}</td>
+                <td>{cliente.telefone}</td>
+                <td>({cliente.localizacao.x},{cliente.localizacao.y})</td>
+
+              </tr>
               ))
             }
-          </div>
-        </div>
+            </tbody>
+          </table>
+        </form>
 
     </div>
   )
