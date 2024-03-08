@@ -1,0 +1,66 @@
+.botao_rotas {
+    background-color: rgba(0, 182, 112, 0.527);
+    /* border-radius: 100%; */
+    font-size: xx-large;
+    padding: 1%;
+    cursor: pointer;
+    position: fixed;
+    right: 0%;
+    top: 0%;
+
+}
+
+.customModal {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(182, 212, 193, 0.925);
+    position: absolute;
+    width: 40%;
+
+    
+    
+}
+.customOverlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.rota_content {
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    
+}
+
+.rota_content tr {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.rota_content tr td, th  {
+    border: 1px solid black;
+    width: 100%;
+    padding: 1%;
+    background-color: rgba(0, 95, 43, 0);
+    
+}
+
+td {
+    background-color: rgba(105, 173, 153, 0.596);
+}
+
