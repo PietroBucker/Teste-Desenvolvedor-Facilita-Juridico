@@ -1,3 +1,11 @@
+## Versao para mobile em desenvolvimento.
+Essa parte é exclusivamente escolha minha para colocar em pratica desenvolviemento usando. 
+
+    - React-Native.
+    - Expo-Router.
+    - Expo.
+    - Nativewind.
+
 # Projeto Resumo
 
 O projeto consiste em uma aplicação desenvolvida em React para o frontend e Node.js com PostgreSQL para o backend. A escolha do JavaScript e TypeScript se deu pela preferência do desenvolvedor, aproveitando os benefícios de tipagem e desenvolvimento. O PostgreSQL foi escolhido pelo uso facilitado com Docker e pela familiaridade com a criação de consultas SQL.
