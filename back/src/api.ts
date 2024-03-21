@@ -8,7 +8,8 @@ const model = new ClienteModel(connection);
 const service = new ClienteService(model);
 
 const corsConfig = {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'exp://192.168.10.114:8081', 'http://192.168.10.114:8081', 'http://localhost:8081'],
+    trusy: true
 }
 const api = express();
 
