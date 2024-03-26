@@ -6,7 +6,8 @@ export const apiRequire = async(): Promise<ClienteType[]> =>{
 
         const response = await fetch("http://192.168.10.114:3001/");
         const data = await response.json();
-
+        
+        
         return data;
     }
     catch(e){
@@ -17,7 +18,14 @@ export const apiRequire = async(): Promise<ClienteType[]> =>{
 
 
 export const apiRouteRequire = async(): Promise<ClienteType[]> =>{
+    try {
+
+    
     const response = await fetch("http://192.168.10.114:3001/route");
     const data = await response.json();
     return data;
+    }
+    catch(e){
+        return [];
+    }
 };

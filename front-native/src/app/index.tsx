@@ -1,17 +1,18 @@
-import { Button } from "@/components/Button"
-import { Header } from "@/components/Header"
-import { View, Text } from "react-native"
-import { Link } from "expo-router"
-import Cadastro from "@/components/Cadastro"
-export default function Home() {
-  return (
-    <View className="flex-1">
-      <Header title="Cadastro" />
-      
-      <Button title='Clientes' />
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import Home from './Home'
+import Clientes from './Clientes'
 
-      <Cadastro />
 
-    </View>
-  )
+const Tab = createBottomTabNavigator()
+
+export default function App() {
+    return (
+        
+        <Tab.Navigator initialRouteName='Home' sceneContainerStyle={{backgroundColor:'rgb(100 116 139)'}}>
+            <Tab.Screen name="Home" component={Home} options={{headerShown: false}}/>
+            <Tab.Screen name="Clientes" component={Clientes} options={{headerShown: false}} />
+        </Tab.Navigator>
+    )
 }

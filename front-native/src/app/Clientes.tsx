@@ -7,19 +7,21 @@ import { Loading } from "@/components/Loading";
 import { ClienteType } from "../../../back/src/model/ClienteType";
 import { apiRequire, apiRouteRequire } from "@/utils/fetch";
 import { CardClient } from "@/components/CardClient";
-import ModalClientes from "@/components/ModalClientes";
 import { Button } from "@/components/Button";
+import ModalClientes from "@/components/ModalClientes";
+import { useIsFocused } from "@react-navigation/native";
 
 
 export default function Clientes(...rest: TouchableOpacityProps[]) {
     const [clientes, setClientes] = useState<ClienteType[]>([])
     const [modalVisible, setModalVisible] = useState<boolean>(false)
     const [orderByLocalizacao, setOrderByLocalizacao] = useState<ClienteType[]>([])
-
+    const focused = useIsFocused()
+    
     useEffect(() => {
         apiRequire().then(data => setClientes(data))
 
-    }, [])
+    }, [focused])
 
     if (clientes.length === 0) {
         return (<Loading />)
@@ -34,7 +36,7 @@ export default function Clientes(...rest: TouchableOpacityProps[]) {
                 <Header title="Clientes" />
             </View>
             <View className="flex-1">
-                <Button title='' />
+                {/* <Button title='' href="/" /> */}
                 <CardClient clientes={clientes} />
             </View>
             <View className="">
