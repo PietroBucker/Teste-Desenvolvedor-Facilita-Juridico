@@ -63,3 +63,19 @@ Dentro da pasta `Frontend`, execute os seguintes comandos:
 
 Isso iniciará o projeto e você poderá acessar o aplicativo no navegador.
 
+## Configuração do Frontend em Native
+Dentro da pasta `Fron-native`, execute os seguintes comandos:
+
+1. Instale as dependências:
+    ```bash
+    npm install
+    ```
+
+2. Inicie o servidor de desenvolvimento:
+    ```bash
+    npm start
+    ```
+
+Isso iniciará o projeto e você poderá acessar o aplicativo no navegador.
+Obs necessario o Back-End estar rodando!
+
