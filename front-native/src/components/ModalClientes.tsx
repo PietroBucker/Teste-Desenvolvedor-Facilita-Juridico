@@ -12,40 +12,40 @@ type ModalClientesProps = ModalProps & {
 
 }
 
-export default function ModalClientes({ isVisible, setVisible, orderClientes, ...rest}: ModalClientesProps) {
-  
+export default function ModalClientes({ isVisible, setVisible, orderClientes, ...rest }: ModalClientesProps) {
+
   return (
 
 
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
 
-      <Modal
-        visible={isVisible}
-        animationType="fade"
-        transparent={true}
-        onRequestClose={() => setVisible(false)}
-        
-      >
-        
-      
 
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'rgba(0,0,0,0.5)'}}>
+    <Modal
+      visible={isVisible}
+      animationType="fade"
+      transparent={true}
+      onRequestClose={() => setVisible(false)}
 
-            <View className='bg-blue-500/90 m-2 py-5 max-h-96 rounded-xl z-2'>
-              <CardClient clientes={orderClientes} />
-            </View>
-            <TouchableOpacity
-              onPress={() => setVisible(false)}
-            >
-              <FontAwesome name='close' color={white} size={50} />
-            </TouchableOpacity>
-          </View>
-          
+    >
 
 
-      </Modal>
-    </View>
+
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
+
+        <View className='bg-blue-500/90 m-2 py-5 max-h-96 rounded-xl z-2'>
+          <CardClient clientes={orderClientes} />
+        </View>
+        <TouchableOpacity
+          onPress={() => setVisible(false)}
+        >
+          <FontAwesome name='close' color={white} size={50} />
+        </TouchableOpacity>
+      </View>
+
+
+
+    </Modal>
+
 
 
   );

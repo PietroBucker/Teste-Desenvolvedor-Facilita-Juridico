@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button"
 import { Header } from "@/components/Header"
 import { View, Text } from "react-native"
+import { AppRegistry } from "react-native"
 
 import Cadastro from "@/components/Cadastro"
 

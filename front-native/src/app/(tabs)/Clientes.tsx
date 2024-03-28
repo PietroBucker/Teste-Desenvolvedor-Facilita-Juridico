@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View, TouchableOpacityProps } from "react-nativ
 import { Header } from "@/components/Header";
 import { Loading } from "@/components/Loading";
 
-import { ClienteType } from "../../../back/src/model/ClienteType";
+import { ClienteType } from "../../../../back/src/model/ClienteType";
 import { apiRequire, apiRouteRequire } from "@/utils/fetch";
 import { CardClient } from "@/components/CardClient";
 import { Button } from "@/components/Button";
@@ -20,7 +20,8 @@ export default function Clientes(...rest: TouchableOpacityProps[]) {
     
     useEffect(() => {
         apiRequire().then(data => setClientes(data))
-
+        
+        
     }, [focused])
 
     if (clientes.length === 0) {
@@ -35,21 +36,25 @@ export default function Clientes(...rest: TouchableOpacityProps[]) {
             <View className="">
                 <Header title="Clientes" />
             </View>
-            <View className="flex-1">
+            <View className="">
                 {/* <Button title='' href="/" /> */}
                 <CardClient clientes={clientes} />
             </View>
-            <View className="">
-                <ModalClientes isVisible={modalVisible} setVisible={setModalVisible} orderClientes={orderByLocalizacao} />
+            
+            <View className="flex-1 justify-center items-center">
+            
+
                 <TouchableOpacity
-                    className=""
+                    className="w-1/2 bg-blue-500 p-5 rounded-lg"
                     onPress={() => {
                         requestOrderByLocal()
                         setModalVisible(true)}}
-                >
-                    <Text className="bg-blue-500 text-white text-center p-5 mt-10">Localização</Text>
+                        >
+                    <Text className="text-white text-center font-bold">Localização</Text>
                 </TouchableOpacity>
+                    
             </View>
+            <ModalClientes isVisible={modalVisible} setVisible={setModalVisible} orderClientes={orderByLocalizacao} />
         </View>
     )
 }

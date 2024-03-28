@@ -1,18 +1,49 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs'
-import Home from './Home'
-import Clientes from './Clientes'
+import { useIsFocused } from '@react-navigation/native';
+import { useRouter } from 'expo-router'
+import React, { useEffect, useRef } from 'react'
+import { Text} from 'react-native'
+import { Animated } from 'react-native';
 
 
-const Tab = createBottomTabNavigator()
-
-export default function App() {
-    return (
+export default function index() {
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+    const useFocused = useIsFocused()
+    const router = useRouter();
+    
+    useEffect(() => {
+        Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 4000,
+            useNativeDriver: true
+        }).start(() => router.push('/Home/'));
         
-        <Tab.Navigator initialRouteName='Home' sceneContainerStyle={{backgroundColor:'rgb(100 116 139)'}}>
-            <Tab.Screen name="Home" component={Home} options={{headerShown: false}}/>
-            <Tab.Screen name="Clientes" component={Clientes} options={{headerShown: false}} />
-        </Tab.Navigator>
+        if(!useFocused){
+            fadeAnim.resetAnimation();
+        }
+
+    }, [useFocused]);
+    
+
+    
+    // clearTimeout(teste);
+
+    
+
+    return (
+        // <Link href='/Home/' className='flex-1 justify-center items-center bg-slate-400' asChild>
+        //     <TouchableHighlight >
+
+
+        //         <Text>Bem Vindo!</Text>
+
+
+        //     </TouchableHighlight>
+        // </Link>
+    <Animated.View className='flex-1 justify-center items-center bg-slate-400'
+        style={{opacity: fadeAnim}}
+        
+    >
+        <Text className='text-2xl'>Bem Vindo!</Text>
+    </Animated.View>
     )
 }

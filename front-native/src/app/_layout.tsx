@@ -1,13 +1,10 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native';
-import { Slot } from 'expo-router';
+import { Stack } from 'expo-router'
+import React from 'react'
 
-
-
-export default function Layout() {
-    return (
-        <SafeAreaView className='flex-1 bg-slate-500'>
-            <Slot />
-        </SafeAreaView>
-    )
+export default function Applayout() {
+  return (
+    <Stack screenOptions={{headerShown:false}}>
+        <Stack.Screen name='index' />
+    </Stack>
+  )
 }

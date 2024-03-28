@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react'
-import { Alert, Keyboard, Text, TextInput, TextInputProps, TouchableOpacity, View } from 'react-native'
+import { Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TextInputProps, TouchableOpacity, View } from 'react-native'
 import { ClienteType } from '../../../back/src/model/ClienteType'
 
 type CadastroProps = TextInputProps & {
@@ -54,7 +54,7 @@ export default function Cadastro({ ...rest }: TextInputProps) {
     }
   }
   return (
-    <View className='flex-1'>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} className='flex-1'>
       <View className='flex-1 m-10'>
         <TextInput
           onChangeText={(text) => onChange(text, 'nome')}
@@ -100,14 +100,18 @@ export default function Cadastro({ ...rest }: TextInputProps) {
           />
         </View>
 
+        <View className='flex-1 items-center justify-center' >
+
+          <TouchableOpacity
+            className='w-2/3 bg-blue-500 p-5 rounded-lg'
+            onPress={cadastrarCliente}
+
+          >
+            <Text className=' text-white text-center font-bold'>Cadastrar Cliente</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <TouchableOpacity
-        className='w-full bg-blue-500 p-5'
-        onPress={cadastrarCliente}
-      >
-        <Text className=' text-white text-center font-bold'>Cadastrar Cliente</Text>
-      </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
 
 
   )

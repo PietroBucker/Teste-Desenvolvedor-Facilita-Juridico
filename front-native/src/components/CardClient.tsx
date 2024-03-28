@@ -8,8 +8,10 @@ type CardClientProps = {
 
 export function CardClient({ clientes }: CardClientProps) {
     return (
+        
         <ScrollView
             scrollEnabled={true}
+            className=""
         >
             <View className="px-4 mt-10">
                 <View className="flex-row border rounded-t-md">
