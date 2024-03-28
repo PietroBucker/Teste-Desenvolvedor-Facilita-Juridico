@@ -77,5 +77,6 @@ Dentro da pasta `Fron-native`, execute os seguintes comandos:
     ```
 
 Isso iniciará o projeto e você poderá acessar o aplicativo no navegador.
-Obs necessario o Back-End estar rodando!
+Obs: necessario ter o app expo-go instalado no celular, usar o Qr-code que aparecera no console para iniciar
+Obs: necessario o Back-End estar rodando!
 
