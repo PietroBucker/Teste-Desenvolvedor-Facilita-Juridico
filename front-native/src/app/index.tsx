@@ -10,6 +10,8 @@ export default function index() {
     const useFocused = useIsFocused()
     const router = useRouter();
     
+    
+
     useEffect(() => {
         Animated.timing(fadeAnim, {
             toValue: 1,

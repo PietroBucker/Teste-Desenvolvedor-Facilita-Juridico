@@ -45,7 +45,7 @@ export default function Clientes(...rest: TouchableOpacityProps[]) {
             
 
                 <TouchableOpacity
-                    className="w-1/2 bg-blue-500 p-5 rounded-lg"
+                    className="w-1/2 bg-blue-500 p-5 rounded-lg border-x-2 border-white shadow-md shadow-black"
                     onPress={() => {
                         requestOrderByLocal()
                         setModalVisible(true)}}
