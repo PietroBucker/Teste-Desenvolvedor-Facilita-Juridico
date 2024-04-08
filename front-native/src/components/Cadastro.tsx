@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from 'react'
-import { Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TextInputProps, TouchableOpacity, View } from 'react-native'
+import { Alert, ScrollView, Text, TextInput, TextInputProps, TouchableOpacity, View } from 'react-native'
 import { ClienteType } from '../../../back/src/model/ClienteType'
-
+import { useForm } from 'react-hook-form'
 type CadastroProps = TextInputProps & {
   cliente: ClienteType
 }
@@ -18,19 +18,29 @@ const initialState = {
 }
 
 export default function Cadastro({ ...rest }: TextInputProps) {
-  const [cliente, setCliente] = useState<ClienteType>(initialState)
+  // <----- codigo sem hook form ----->
+  // const [cliente, setCliente] = useState<ClienteType>(initialState)
+  // const onSubmit = (data: any) => {
+    //   console.log(data)
+    // }
+  
+  // function onChange(text: string, key: string) {
+  //   setCliente({ ...cliente, [key]: text })
+  
+  // }
 
-  function onChange(text: string, key: string) {
-    setCliente({ ...cliente, [key]: text })
+  // function onChangeLocalizacao(value: string, key: 'x' | 'y') {
+    //   setCliente({ ...cliente, localizacao: { ...cliente.localizacao, [key]: Number(value) } })
+    
+    // }
 
-  }
+  // <----- codigo com hook form ----->
 
-  function onChangeLocalizacao(value: string, key: 'x' | 'y') {
-    setCliente({ ...cliente, localizacao: { ...cliente.localizacao, [key]: Number(value) } })
+  const { register, handleSubmit, setValue } = useForm<ClienteType>()
 
-  }
-
-  async function cadastrarCliente() {
+  async function cadastrarCliente(data: any) {
+    console.log(data);
+    
     try {
 
       const response = await fetch('http://192.168.10.114:3001/cadastro', {
@@ -38,7 +48,7 @@ export default function Cadastro({ ...rest }: TextInputProps) {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(cliente)
+        body: JSON.stringify(data)
       })
 
       if (response.ok) {
@@ -54,64 +64,62 @@ export default function Cadastro({ ...rest }: TextInputProps) {
     }
   }
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} className='flex-1'>
-      <View className='flex-1 m-10'>
+        
+        <ScrollView className='flex-1 m-10' showsVerticalScrollIndicator={false}>
         <TextInput
-          onChangeText={(text) => onChange(text, 'nome')}
+          onChangeText={(text) => setValue('nome', text)}
           placeholder='Digite o Nome'
           keyboardType='default'
-          value={cliente.nome}
           className='bg-white border-2 border-blue-500 rounded-md p-2 w-full mb-10'
+          {...register('nome', { required: true })}
 
         />
         <TextInput
-          onChangeText={(text) => onChange(text, 'email')}
+          onChangeText={(text) => setValue('email', text)}
           placeholder='Digite o Email'
           keyboardType='default'
-          value={cliente.email}
           className='bg-white border-2 border-blue-500 rounded-md p-2 w-full mb-10'
-
+          {...register('email', { required: true })}
         />
         <TextInput
-          onChangeText={(text) => onChange(text, 'telefone')}
+          onChangeText={(text) => setValue('telefone', text)}
           placeholder='Digite o Telefone'
           keyboardType='default'
-          value={cliente.telefone}
           className='bg-white border-2 border-blue-500 rounded-md p-2 w-full mb-10'
-
+          {...register('telefone', { required: true })}
         />
         <View className='flex-row'>
 
           <TextInput
-            onChangeText={(value) => onChangeLocalizacao(value, 'x')}
+            onChangeText={(value) => setValue(`localizacao.x`, Number(value))}
             placeholder='Digite o X-Localização'
-            keyboardType='numeric'
-            value={cliente.localizacao.x != 0 ? cliente.localizacao.x.toString() : ''}
+            keyboardType='decimal-pad'
+            // value={cliente.localizacao.x != 0 ? cliente.localizacao.x.toString() : ''}
             className='bg-white border-2 border-blue-500 rounded-md p-2 w-2/5 m-auto mb-10'
-
+            {...register('localizacao.x', { required: true })}
           />
           <TextInput
-            onChangeText={(value) => onChangeLocalizacao(value, 'y')}
+            onChangeText={(value) => setValue('localizacao.y', Number(value))}
             placeholder='Digite o Y-Localização'
-            keyboardType='numeric'
-            value={cliente.localizacao.y != 0 ? cliente.localizacao.y.toString() : ''}
+            keyboardType='decimal-pad'
+            // value={cliente.localizacao.y != 0 ? cliente.localizacao.y.toString() : ''}
             className='bg-white border-2 border-blue-500 rounded-md p-2 w-2/5 m-auto mb-10'
-
+            {...register('localizacao.y', { required: true })}
           />
         </View>
 
         <View className='flex-1 items-center justify-center' >
 
           <TouchableOpacity
-            className='w-2/3 bg-blue-500 p-5 rounded-lg'
-            onPress={cadastrarCliente}
+            className='w-2/3 bg-blue-500 p-5 rounded-lg border-x-2 border-white shadow-md shadow-black'
+            onPress={handleSubmit(cadastrarCliente)}
 
           >
             <Text className=' text-white text-center font-bold'>Cadastrar Cliente</Text>
           </TouchableOpacity>
         </View>
-      </View>
-    </KeyboardAvoidingView>
+        </ScrollView>
+      
 
 
   )
